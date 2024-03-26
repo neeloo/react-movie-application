@@ -1,4 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react' ;
+import {TailSpin} from 'react-loader-spinner';
+import {addDoc} from 'firebase/firestore';
+import { movieRef } from '../firebase/firebase';
+import swal from  'sweet-alert';
 
 const Addmovie = () => {
   const [form, setform] = useState({
@@ -7,7 +11,19 @@ const Addmovie = () => {
     discription: " ",
     image: " "
   });
-  const[loading,setloading]=useState(true);
+  const[loading,setloading]=useState(false);
+
+  const addmovie = async() =>{
+    setloading(true);
+    await addDoc(movieRef,form);
+    swal ({
+      title:"Successfuly Added",
+      icon:"success",
+      button:false,
+      timer:3000
+    });
+    setloading(false);
+  }
 
   return (
     <div>
@@ -48,7 +64,9 @@ const Addmovie = () => {
                 </div>
               </div>
               <div class="p-2 w-full">
-                <button class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-700 rounded text-lg">Submit</button>
+                <button  onClick={addmovie}class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-700 rounded text-lg">
+                { loading ? <TailSpin height={25} color="white" /> :'Submit' }
+                </button>
               </div>
             </div>
           </div>
