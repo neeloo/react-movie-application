@@ -1,28 +1,37 @@
-import React, { useState } from 'react' ;
-import {TailSpin} from 'react-loader-spinner';
-import {addDoc} from 'firebase/firestore';
+import React, { useState } from 'react';
+import { TailSpin } from 'react-loader-spinner';
+import { addDoc } from 'firebase/firestore';
 import { movieRef } from '../firebase/firebase';
-import swal from  'sweet-alert';
+import swal from 'sweet-alert'
 
 const Addmovie = () => {
   const [form, setform] = useState({
-    titel: "",
+    title: "",
     year: " ",
     discription: " ",
     image: " "
   });
-  const[loading,setloading]=useState(false);
+  const [loading, setloading] = useState(false);
 
-  const addmovie = async() =>{
-    setloading(true);
-    await addDoc(movieRef,form);
-    swal ({
-      title:"Successfuly Added",
-      icon:"success",
-      button:false,
-      timer:3000
-    });
-    setloading(false);
+  const addmovie = async () => {
+    try {
+      setloading(true);
+      await addDoc(movieRef, form);
+      swal({
+        title: "Successfuly Added",
+        icon: "success",
+        button: false,
+        timer: 3000
+      });
+      setloading(false);
+    } catch (error) {
+      swal({
+        title: "error",
+        icon: "err",
+        button: false,
+        timer: 3000
+      });
+    }
   }
 
   return (
@@ -34,13 +43,15 @@ const Addmovie = () => {
           </div>
           <div class="lg:w-1/2 md:w-2/3 mx-auto">
             <div class="flex flex-wrap -m-2">
+
               <div class="p-2 w-1/2">
                 <div class="relative">
                   <label for="name" class="leading-7 text-sm text-gray-300">Title</label>
-                  <input type="text" id="name" name="name" value={form.titel} onChange={(e) => setform({ ...form, title: e.target.value })}
+                  <input type="text" id="name" name="name" value={form.title} onChange={(e) => setform({ ...form, title: e.target.value })}
                     class="w-full bg-white  rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
               </div>
+
               <div class="p-2 w-1/2">
                 <div class="relative">
                   <label for="email" class="leading-7 text-sm text-gray-300">Year</label>
@@ -48,6 +59,7 @@ const Addmovie = () => {
                     class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
               </div>
+
               <div class="p-2 w-full">
                 <div class="relative">
                   <label for="message" class="leading-7 text-sm text-gray-300">Image Link</label>
@@ -63,11 +75,13 @@ const Addmovie = () => {
                     class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                 </div>
               </div>
+
               <div class="p-2 w-full">
-                <button  onClick={addmovie}class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-700 rounded text-lg">
-                { loading ? <TailSpin height={25} color="white" /> :'Submit' }
+                <button onClick={addmovie} class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-700 rounded text-lg">
+                  {loading ? <TailSpin height={25} color="white" /> : 'Submit'}
                 </button>
               </div>
+
             </div>
           </div>
         </div>
