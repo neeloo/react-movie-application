@@ -4,8 +4,11 @@ const Addmovie = () => {
   const [form, setform] = useState({
     titel: "",
     year: " ",
-    discription: " "
+    discription: " ",
+    image: " "
   });
+  const[loading,setloading]=useState(true);
+
   return (
     <div>
       <section class="text-gray-600 body-font relative">
@@ -31,7 +34,15 @@ const Addmovie = () => {
               </div>
               <div class="p-2 w-full">
                 <div class="relative">
-                  <label for="message" class="leading-7 text-sm text-gray-300">Discription</label>
+                  <label for="message" class="leading-7 text-sm text-gray-300">Image Link</label>
+                  <input id="message" name="message" value={form.image} onChange={(e) => setform({ ...form, image: e.target.value })}
+                    class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                </div>
+              </div>
+
+              <div class="p-2 w-full">
+                <div class="relative">
+                  <label for="message" class="leading-7 text-sm text-gray-300">Description</label>
                   <textarea id="message" name="message" value={form.discription} onChange={(e) => setform({ ...form, discription: e.target.value })}
                     class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                 </div>
