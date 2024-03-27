@@ -2,6 +2,7 @@ import AddMovie from "./component/AddMovie";
 import Card from "./component/Card";
 import Header from "./component/Header";
 import { Route, Routes } from 'react-router-dom'
+import Detail from "./component/Detail";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <Card />} />
         <Route path="/addmovie" element={ <AddMovie/>} />
+        <Route path="/addmovie" element={ <Detail/>} />
       </Routes>
     </div>
   );
