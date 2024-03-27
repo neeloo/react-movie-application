@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { Audio } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import ReactStars from 'react-stars'
+import { getDocs } from 'firebase/firestore';
+import { movieRef } from '../firebase/firebase';
 
 const Card = () => {
 
   const [data, setdata] = useState([]);
-  const [loading, setloading] = useState(true);
+  const [loading, setloading] = useState(false);
   useEffect(() => {
     async function getData() {
+    setloading(true);
+    const _data=await getDocs(movieRef);
+    //console.log(_data);
+    _data.forEach((doc)=>{
+      setdata((pre)=>[...pre,doc.data()])
 
+    })
+    setloading(false)
     }
     getData();
   }, [])
@@ -16,7 +25,7 @@ const Card = () => {
 
   return (
     <div className='flex flex-wrap justify-between p-3 mt-2'>
-      {loading ? <div className="w-full  flex justify-center items-center"><Audio height={40} color="white"/></div>:
+      {loading ? <div className="w-full  flex justify-center items-center h-96"><ThreeDots  height={40} color="white"/></div>:
         
           data.map((e, i) => {
             return (
