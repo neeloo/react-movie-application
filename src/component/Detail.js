@@ -1,13 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import ReactStars from 'react-stars'
+import { useParams } from 'react-router-dom'
+import {doc} from 'firebase/firestore'
+import { movieRef } from '../firebase/firebase';
 
 
 const Detail = () => {
+  const{id}=useParams();
+
+  //window.alert(id);
+
+  const[data,setdata]=useEffect({
+    title:" ",
+    year:" ",
+    image:" ",
+    description:" "
+  });
+
+  useEffect(()=>{
+    async function getData(){
+      const d=await getDoc(movieRef,id);
+      setdata(d.data());
+
+    }
+    getData();
+
+  },[])
+
   return (
-    <div className='p-4  mt-4  w-full flex justify-center'>
-      <img className='h-96' src=" https://www.movieposters.com/cdn/shop/products/108b520c55e3c9760f77a06110d6a73b_240x360_crop_center.progressive.jpg?v=1573652543" alt="" />
-      <div className="ml-4 w-1/2" >
-        <h1 className='text-3xl fond-bold text-gray-400'>Avanger <span className='text-xl'>(2004)</span></h1>
-        <p className='mt-3'>The Avengers were a team of extraordinary individuals, with either superpowers or other special characteristics. Though primarily affiliated with the interests of the United States of America, the group's purpose was to protect global stability from inner or extraterrestrial threats.</p>
+    <div className='p-4  mt-4  w-full flex  flex-col  md:flex-row  items-center  md:items-center justify-center'>
+      <img className='h-96 block md:sticky top-14' src={data.image} alt="" />
+      <div className="md:ml-4 ml-0  w-full md:w-1/2" >
+        <h1 className='text-3xl fond-bold text-gray-400'>{data.title} <span className='text-xl'>{data.year}</span></h1>
+        <ReactStars size={20} half={true} value={3.5} edit={false} />
+        <p className='mt-3'>{data.description}</p>
+          
       </div>
     </div>
   )
