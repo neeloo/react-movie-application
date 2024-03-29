@@ -23,6 +23,12 @@ const Addmovie = () => {
         button: false,
         timer: 3000
       });
+      setform({
+        title: "",
+        year: " ",
+        discription: " ",
+        image: " "
+      })
       setloading(false);
     } catch (error) {
       swal({
