@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../firebase/firebase';
 import { ThreeCircles } from 'react-loader-spinner';
+import Review from './Review';
 
 
 
@@ -43,6 +44,7 @@ const Detail = () => {
             <h1 className='text-3xl fond-bold text-gray-400'>{data.title} <span className='text-xl'>({data.year})</span></h1>
             <ReactStars size={20} half={true} value={3.5} edit={false} />
             <p className='mt-3'>{data.description}</p>
+            <Review/>
           </div>
         </>
       }
