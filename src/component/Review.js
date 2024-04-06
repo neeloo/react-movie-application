@@ -4,6 +4,8 @@ import { reviewsRef } from '../firebase/firebase';
 import { addDoc } from 'firebase/firestore';
 import { TailSpin } from 'react-loader-spinner';
 
+
+
 const Review = () => {
   
   const [rate, setrate] = useState(0);
