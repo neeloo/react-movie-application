@@ -30,7 +30,8 @@ const Addmovie = () => {
         image: " "
       })
       setloading(false);
-    } catch (error) {
+    } 
+    catch (error) {
       swal({
         title: "error",
         icon: "err",
