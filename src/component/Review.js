@@ -12,7 +12,8 @@ const Review = ({id,prerating,userated}) => {
   
   const [rating, setrate] = useState(0);
   const[loading,setloading]=useState(false);
-  const[form,setform]=useState("")
+  const[form,setform]=useState("");
+  const[data,setdata]=useState();
 
   const sendrev=async() =>{
     setloading(true);
@@ -53,7 +54,10 @@ const Review = ({id,prerating,userated}) => {
 
   }
   useEffect(()=>{
+   async function getData(){
 
+   }
+   getData();
   },[])
 
   return (
