@@ -14,8 +14,9 @@ const Addmovie = () => {
   const [loading, setloading] = useState(false);
 
   const addmovie = async () => {
+    setloading(true);
     try {
-      setloading(true);
+      
       await addDoc(movieRef, form);
       swal({
         title: "Successfuly Added",
@@ -29,16 +30,17 @@ const Addmovie = () => {
         discription: " ",
         image: " "
       })
-      setloading(false);
+     
     } 
-    catch (error) {
+    catch (err) {
       swal({
-        title: "error",
-        icon: "err",
+        title: err,
+        icon: "error",
         button: false,
         timer: 3000
       });
     }
+    setloading(false);
   }
 
   return (
@@ -52,15 +54,17 @@ const Addmovie = () => {
             <div className="flex flex-wrap -m-2">
 
               <div className="p-2 w-1/2">
-                <div className="naming">
+                <div className="relative">
                   <label for="name" className="leading-7 text-sm text-gray-300">Title</label>
-                  <input type="text" id="name" name="name" value={form.title} onChange={(e) => setform({ ...form, title: e.target.value })}
-                    className="w-full bg-white  rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                  <input type="text" id="name" name="name" 
+                  value={form.title} onChange={(e) => setform({ ...form, title: e.target.value })}
+                    className="w-full bg-white  rounded border border-gray-300 focus:border-indigo-500
+                     focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
               </div>
 
               <div className="p-2 w-1/2">
-                <div className="naming">
+                <div className="relative">
                   <label for="email" className="leading-7 text-sm text-gray-300">Year</label>
                   <input type="email" id="email" name="email" value={form.year} onChange={(e) => setform({ ...form, year: e.target.value })}
                     className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -68,7 +72,7 @@ const Addmovie = () => {
               </div>
 
               <div className="p-2 w-full">
-                <div className="naming">
+                <div className="relative">
                   <label for="message" className="leading-7 text-sm text-gray-300">Image Link</label>
                   <input id="message" name="message" value={form.image} onChange={(e) => setform({ ...form, image: e.target.value })}
                     className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -76,7 +80,7 @@ const Addmovie = () => {
               </div>
 
               <div className="p-2 w-full">
-                <div className="naming">
+                <div className="relative">
                   <label for="message" className="leading-7 text-sm text-gray-300">Description</label>
                   <textarea id="message" name="message" value={form.discription} onChange={(e) => setform({ ...form, discription: e.target.value })}
                     className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
