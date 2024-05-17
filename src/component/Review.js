@@ -83,10 +83,17 @@ const Review = ({ id, prerating, userated }) => {
         <div className='mt-8 flex justify-center'> <ThreeDots height={15} color='white' /></div>
 
         :
-        <div>
+        <div className='mt-4 '>
           {data.map((e, i) => {
             return (
-              <div key={i}>{e.thought}</div>
+              <div className='bg-gray-900 p-2 w-full border-b header bg-opacity-50 border-gray-500 mt-2' key={i}>
+                <div className='flex items-center'>
+                  <p className='text-blue-500'>{e.name}</p>
+                  <p className='ml-2 text-xs'>({new Date(e.timestamp).toLocaleString()})</p>
+                </div>
+                <ReactStars size={15} half={true} value={e.rating} edit={false}  />
+                <p>{e.thought}</p>
+              </div>
             )
           })}
 
