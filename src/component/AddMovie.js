@@ -10,15 +10,15 @@ const Addmovie = () => {
     year: " ",
     discription: " ",
     image: " ",
-    rating:0,
-    rated:0
+    rating: 0,
+    rated: 0
   });
   const [loading, setloading] = useState(false);
 
   const addmovie = async () => {
     setloading(true);
     try {
-      
+
       await addDoc(movieRef, form);
       swal({
         title: "Successfuly Added",
@@ -32,8 +32,8 @@ const Addmovie = () => {
         discription: " ",
         image: " "
       })
-     
-    } 
+
+    }
     catch (err) {
       swal({
         title: err,
@@ -58,8 +58,8 @@ const Addmovie = () => {
               <div className="p-2 w-1/2">
                 <div className="relative">
                   <label for="name" className="leading-7 text-sm text-gray-300">Title</label>
-                  <input type="text" id="name" name="name" 
-                  value={form.title} onChange={(e) => setform({ ...form, title: e.target.value })}
+                  <input type="text" id="name" name="name"
+                    value={form.title} onChange={(e) => setform({ ...form, title: e.target.value })}
                     className="w-full bg-white  rounded border border-gray-300 focus:border-indigo-500
                      focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>

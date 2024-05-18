@@ -91,7 +91,7 @@ const Review = ({ id, prerating, userated }) => {
                   <p className='text-blue-500'>{e.name}</p>
                   <p className='ml-2 text-xs'>({new Date(e.timestamp).toLocaleString()})</p>
                 </div>
-                <ReactStars size={15} half={true} value={e.rating} edit={false}  />
+                <ReactStars size={15} half={true} value={e.rating} edit={false} />
                 <p>{e.thought}</p>
               </div>
             )
