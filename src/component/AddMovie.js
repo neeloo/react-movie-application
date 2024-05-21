@@ -35,12 +35,12 @@ const Addmovie = () => {
 
     }
     catch (err) {
-      swal({
-        title: err,
-        icon: "error",
-        button: false,
-        timer: 3000
-      });
+      // swal({
+      //   title: err,
+      //   icon: "error",
+      //   button: false,
+      //   timer: 3000
+      // });
     }
     setloading(false);
   }
