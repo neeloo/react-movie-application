@@ -3,7 +3,7 @@ import ReactStars from 'react-stars'
 import { reviewsRef, db } from '../firebase/firebase';
 import { addDoc, doc, updateDoc, query, where, getDocs } from 'firebase/firestore';
 import { TailSpin, ThreeDots } from 'react-loader-spinner';
-import swal from 'sweet-alert'
+import swal from 'sweet-alert';
 
 
 
@@ -38,19 +38,18 @@ const Review = ({ id, prerating, userated }) => {
       swal({
         title: "Review send",
         icon: "success",
-        button: false,
+        buttons: false,
         timer: 3000
       });
 
     } catch (error) {
-      swal({
-        title: error.message,
-        icon: "error",
-        button: false,
-        timer: 3000
-      });
-
-    }
+      // swal({
+      //     title: error.message,
+      //     icon: "error",
+      //     buttons: false,
+      //     timer: 3000
+      //   })
+  }
     setloading(false)
 
   }

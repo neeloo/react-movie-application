@@ -23,7 +23,7 @@ const Addmovie = () => {
       swal({
         title: "Successfuly Added",
         icon: "success",
-        button: false,
+        buttons: false,
         timer: 3000
       });
       setform({
@@ -34,14 +34,14 @@ const Addmovie = () => {
       })
 
     }
-    catch (err) {
+    catch (error) {
       // swal({
-      //   title: err,
-      //   icon: "error",
-      //   button: false,
-      //   timer: 3000
-      // });
-    }
+      //     title: error.message,
+      //     icon: "error",
+      //     buttons: false,
+      //     timer: 3000
+      //   })
+  }
     setloading(false);
   }
 
