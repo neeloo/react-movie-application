@@ -15,6 +15,8 @@ const Review = ({ id, prerating, userated }) => {
   const [reviewloda, setrevload] = useState(false);
   const [form, setform] = useState("");
   const [data, setdata] = useState([]);
+  const [newAdded, setNewAdded] = useState(0);
+
 
   const sendrev = async () => {
     setloading(true);
@@ -29,12 +31,13 @@ const Review = ({ id, prerating, userated }) => {
       const ref = doc(db, "movies", id)
       await updateDoc(ref, {
         rating: prerating + rating,
-        rated: userated + 1
+        rated:userated + 1
 
 
       })
       setrate(0);
       setform("")
+      setNewAdded(newAdded + 1);
       swal({
         title: "Review send",
         icon: "success",
@@ -66,7 +69,7 @@ const Review = ({ id, prerating, userated }) => {
 
     }
     getData();
-  }, [])
+  }, [newAdded])
 
   return (
 
