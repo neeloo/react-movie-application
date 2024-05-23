@@ -26,8 +26,8 @@ function App() {
           <Route path="/" element={<Card />} />
           <Route path="/addmovie" element={<AddMovie />} />
           <Route path="/detail/:id" element={<Detail />} />
-          <Route path="/login/:id" element={<Login/>} />
-          <Route path="/signup/:id" element={<Sign />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Sign />} />
         </Routes>
       </div>
     </Appstate.Provider>
@@ -35,4 +35,4 @@ function App() {
 }
 
 export default App;
-export{Appstate};
+export {Appstate};
