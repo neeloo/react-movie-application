@@ -284,6 +284,7 @@ const Sign = () => {
                         </button>
                     </div>
                 </>
+                
             }
             <div>
                 <p>Already have an account <Link to={'/login'}><span className="text-blue-500">Login</span></Link></p>
