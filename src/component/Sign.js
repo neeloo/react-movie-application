@@ -145,6 +145,7 @@ const Signup = () => {
     //     }, auth);
     //   }
 
+
     const requestOtp = () => {
         setLoading(true);
         // generateRecaptha();
@@ -198,6 +199,7 @@ const Signup = () => {
     //     }
     // }
 
+    
     return (
         <div className="w-full flex flex-col mt-8 items-center">
             <h1 className="text-xl font-bold">Sign up</h1>
