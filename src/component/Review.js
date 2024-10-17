@@ -6,8 +6,6 @@ import { TailSpin, ThreeDots } from 'react-loader-spinner';
 import swal from 'sweet-alert';
 
 
-
-
 const Review = ({ id, prerating, userated }) => {
 
   const [rating, setrate] = useState(0);

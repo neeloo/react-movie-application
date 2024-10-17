@@ -7,16 +7,11 @@ import { createContext, useEffect, useState } from "react";
 import Login from "./component/Login";
 import Sign from "./component/Sign";
 
-
-
-
 const Appstate = createContext();
 
 function App() {
   const[login,setlogin]=useState(false);
   const[username,setusername]=useState("");
-
-  
 
   return (
     <Appstate.Provider value={{login,username,setlogin,setusername}}>

@@ -6,13 +6,11 @@ import { db } from '../firebase/firebase';
 import { ThreeCircles } from 'react-loader-spinner';
 import Review from './Review';
 
-
-
 const Detail = () => {
   const { id } = useParams();
 
+  
   //window.alert(id);
-
   const [data, setdata] = useState({
     title: " ",
     year: " ",
